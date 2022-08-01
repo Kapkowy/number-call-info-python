@@ -4,7 +4,7 @@ import io
 layout = [[Sg.InputText("000-000-000", key='lol')], [Sg.In("Call Type", key='ews')], [Sg.In(visible=False, key='teras'),
                                                      Sg.CalendarButton("When they call you?", key="test", target='teras'),
                                                      Sg.Button("Put Data?", key="3232", visible=True)],
-         [Sg.Button('Are You Sure?', key='lot', visible=False)]]
+         [Sg.Button('Are You Sure?', key='lot', visible=False), Sg.Text("", key='loe', visible=False),]]
 
 window = Sg.Window('Test', layout, icon='icon.ico')
 while True:
@@ -14,12 +14,12 @@ while True:
         break
     if event == '3232':
         window['lot'].update(visible=True)
+        window['loe'].update(values['teras'], visible=True)
     if event == 'lolr':
-        l3r = Sg.popup_get_date(modal=True, no_titlebar=False)
-        if l3r != "":
-            print("lol")
-            window.refresh()
-            window['rrer'].update(l3r, visible=True), window['lot'].update(visible=True)
+        l3r = Sg.popup_get_date(modal=True, no_titlebar=True)
+        print("lol")
+        window.refresh()
+        window['rrer'].update(l3r, visible=True), window['lot'].update(visible=True)
     if event == 'lot':
         print(values['teras'])
         print(values['lol'])
